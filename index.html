@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<canvas id="canvas" style="width:400px;height:220px;border:1px solid green"></canvas>
+<script>
+    /*Bai1*/
+    function findMax(arrayScores)
+    {
+        if(arrayScores.length==0)
+        {
+            console.log('Do not have any score!');
+            return NaN;
+        }
+        let maxScore=arrayScores[0];
+        for(let i=0;i<arrayScores.length;i++)
+        {
+            if(maxScore<arrayScores[i]) maxScore=arrayScores[i];
+        }
+        return maxScore;
+    }
+    /*----------------------------------------------------------------------*/
+
+    /*Bai2*/
+    function tryRemoveFromArray(arrayNumbers,x)
+    {
+        while(arrayNumbers.indexOf(x) != -1)
+        {
+            arrayNumbers.splice(arrayNumbers.indexOf(x),1);
+        }
+        return arrayNumbers;
+    }
+    /*----------------------------------------------------------------------*/
+
+    /*Bai3*/
+    function isFibonacci(numberToCheck)
+    {
+        let f0=0,f1=1;
+        while(f0<=numberToCheck)
+        {
+            if(f0==numberToCheck) return true;
+            f1=f0+f1;
+            f0=f1-f0;
+        }
+        return false;
+    }
+    /*----------------------------------------------------------------------*/
+
+    /*Bai4*/
+    class Circle
+    {
+        constructor(x,y,radius,color)
+        {
+            this.x=x;
+            this.y=y;
+            this.radius=radius;
+            this.color=color;
+        }
+        render(canvas)
+        {
+            let ctx=canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+            ctx.fillStyle=this.color;
+            ctx.fill();
+        }
+    }
+    let circle=new Circle(10,10,100,'#000000');
+    circle.render(document.getElementById('canvas'));
+    /*----------------------------------------------------------------------*/
+</script>
+</body>
+</html>
